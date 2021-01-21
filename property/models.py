@@ -37,7 +37,8 @@ class Flat(models.Model):
     liked_by = models.ManyToManyField(User, related_name="liked_flats",
                                       verbose_name="Кто лайкнул", blank=True)
 
-    new_building = models.NullBooleanField(verbose_name="Новое здание?")
+    new_building = models.NullBooleanField(verbose_name="Новое здание?",
+                                           db_index=True)
 
     def __str__(self):
         return f"{self.town}, {self.address} ({self.price}р.)"
